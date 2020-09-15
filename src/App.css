@@ -1,0 +1,23 @@
+.App {
+  text-align: center;
+}
+
+.App {
+  background-color: #00274c;
+  background-image: linear-gradient( #ff8c8c, #feb2b2); 
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+input {
+  opacity: 1 !important;
+}
+
+.App-link {
+  color: #61dafb;
+}
