@@ -103,7 +103,11 @@ const Question = ({
         onClick={() => {
           moveSectionDown();
           if(submit) { // when someone wants to submit another class
-            window.scrollTo(0,0);
+            window.scrollTo({
+              top: window.innerHeight * 3,
+              left: 0,
+              behavior: 'smooth'
+            });
           }
         }}
       >
