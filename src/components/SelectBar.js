@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Select from "react-select";
+import { QuestionButton } from "./styles"
 
 const Wrapper = styled.div`
   margin: 20px auto;
@@ -12,18 +13,7 @@ const Wrapper = styled.div`
   }
 `;
 
-const Button = styled.button`
-  border: 4px solid #ffcb05;
-  padding: 4px 8px;
-  color: #fafafa;
-  font-size: 18px;
-  background-color: rgba(0, 0, 0, 0);
 
-  transition: all 0.5s;
-  &:hover {
-    background-color: #ffcb05;
-  }
-`;
 
 const QuestionWrapper = styled.div`
   width: 100%;
@@ -49,9 +39,12 @@ const SelectBar = ({
   choices,
   moveSectionDown,
   onChange,
+  initial,
+  reset
 }) => {
-  const [value, setValue] = useState("");
-  useEffect(() => {}, [keyName, choices, value]);
+  // const [value, setValue] = useState(initial);
+  useEffect(() => {
+  }, [keyName, choices, initial, reset]);
 
   return (
     <div className="section">
@@ -66,33 +59,39 @@ const SelectBar = ({
             }
           }}
           placeholder={label}
-          key={keyName}
+          key={reset ? `${keyName}_${reset}` : keyName}
           styles={customStyles}
           options={choices}
-          inputValue={value}
+          inputValue={initial}
           onInputChange={(e) => {
             if (e !== "" && typeof e != "object") {
-              setValue(e);
-            } else if (value.length === 1 && typeof e != "object") {
-              setValue(e);
+              console.log(e);
+              onChange(keyName, e);
+            } else if (initial.length === 1 && typeof e != "object") {
+              console.log(e);
+              onChange(keyName, e);
             }
+            if(e == "") {
+              console.log("This worked");
+            }
+            console.log("onInputChange");
           }}
           onChange={(newValue, actionMeta) => {
             if (actionMeta.action === "select-option") {
               onChange(keyName, newValue.value);
-              setValue(newValue.value);
             }
+            console.log("onChange");
           }}
         />
       </Wrapper>
 
-      <Button
+      <QuestionButton
         onClick={() => {
           moveSectionDown();
         }}
       >
         Enter
-      </Button>
+      </QuestionButton>
     </div>
   );
 };

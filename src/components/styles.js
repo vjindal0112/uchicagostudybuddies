@@ -14,6 +14,20 @@ export const Button = styled.a`
   }
 `;
 
+export const QuestionButton = styled.button`
+  border: 4px solid ${collegeLight};
+  padding: 4px 8px;
+  margin: 10px;
+  color: #fafafa;
+  font-size: 18px;
+  background-color: rgba(0, 0, 0, 0);
+
+  transition: all 0.5s;
+  &:hover {
+    background-color: ${collegeLight};
+  }
+`;
+
 const drop = keyframes`
   0% {
     height: 0px;

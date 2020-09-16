@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { collegeDark, collegeLight } from "../constants"
+import { QuestionButton } from "./styles"
 
 const Wrapper = styled.div`
   margin: 20px auto;
@@ -66,11 +67,14 @@ const Question = ({
   keyName,
   moveSectionDown,
   onChange,
+  submitFunction,
   submit,
+  initial
 }) => {
-  const [value, setValue] = useState("");
+  // const [value, setValue] = useState(initial);
 
-  useEffect(() => {}, [keyName]);
+  useEffect(() => {
+  }, [keyName, initial]);
 
   return (
     <div className="section">
@@ -87,21 +91,33 @@ const Question = ({
             }
           }}
           onChange={(e) => {
-            setValue(e.target.value);
+            // setValue(e.target.value);
             onChange(keyName, e.target.value);
           }}
-          value={value}
+          value={initial}
           placeholder={label}
         />
       </Wrapper>
 
-      <Button
+      <QuestionButton
         onClick={() => {
           moveSectionDown();
+          if(submit) { // when someone wants to submit another class
+            window.scrollTo(0,0);
+          }
         }}
       >
-        {submit ? "Submit" : "Enter"}
-      </Button>
+        {submit ? "Another Class" : "Enter"}
+      </QuestionButton>
+      {submit ? (
+        <QuestionButton
+          onClick={() => {
+            submitFunction();
+          }}
+        >
+          Submit
+        </QuestionButton>
+      ) : null}
     </div>
   );
 };

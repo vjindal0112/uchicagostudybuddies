@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css";
 import RangeSlider from "react-bootstrap-range-slider";
 import styled from "styled-components";
+import { QuestionButton } from "./styles"
 
 const Left = styled.h5`
   position: relative;
@@ -33,19 +34,6 @@ const Right = styled.h5`
   }
 `;
 
-const Button = styled.button`
-  border: 4px solid #ffcb05;
-  padding: 4px 8px;
-  color: #fafafa;
-  font-size: 18px;
-  background-color: rgba(0, 0, 0, 0);
-
-  transition: all 0.5s;
-  &:hover {
-    background-color: #ffcb05;
-  }
-`;
-
 const QuestionWrapper = styled.div`
   width: 100%;
   margin: 0 auto;
@@ -65,11 +53,11 @@ const Wrapper = styled.div`
   }
 `;
 
-const Slider = ({ title, keyName, moveSectionDown, onChange }) => {
-  const [value, setValue] = useState(2);
+const Slider = ({ title, keyName, moveSectionDown, onChange, initial }) => {
+  // const [value, setValue] = useState(initial);
 
   useEffect(() => {
-  }, [keyName]);
+  }, [keyName, initial]);
 
   return (
     <div className="section">
@@ -87,9 +75,8 @@ const Slider = ({ title, keyName, moveSectionDown, onChange }) => {
         <Right>Strongly Agree</Right>
         <RangeSlider
           key={keyName}
-          value={value}
+          value={initial}
           onChange={(e) => {
-            setValue(e.target.value);
             onChange(keyName, e.target.value);
           }}
           min={0}
@@ -100,13 +87,13 @@ const Slider = ({ title, keyName, moveSectionDown, onChange }) => {
         />
       </Wrapper>
 
-      <Button
+      <QuestionButton
         onClick={() => {
           moveSectionDown();
         }}
       >
         Enter
-      </Button>
+      </QuestionButton>
     </div>
   );
 };
