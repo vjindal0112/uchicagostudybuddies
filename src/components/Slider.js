@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import "react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css";
 import RangeSlider from "react-bootstrap-range-slider";
 import styled from "styled-components";
@@ -54,7 +54,6 @@ const Wrapper = styled.div`
 `;
 
 const Slider = ({ title, keyName, moveSectionDown, onChange, initial }) => {
-  // const [value, setValue] = useState(initial);
 
   useEffect(() => {
   }, [keyName, initial]);

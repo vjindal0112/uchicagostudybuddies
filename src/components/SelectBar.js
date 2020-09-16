@@ -65,22 +65,15 @@ const SelectBar = ({
           inputValue={initial}
           onInputChange={(e) => {
             if (e !== "" && typeof e != "object") {
-              console.log(e);
               onChange(keyName, e);
             } else if (initial.length === 1 && typeof e != "object") {
-              console.log(e);
               onChange(keyName, e);
             }
-            if(e == "") {
-              console.log("This worked");
-            }
-            console.log("onInputChange");
           }}
           onChange={(newValue, actionMeta) => {
             if (actionMeta.action === "select-option") {
               onChange(keyName, newValue.value);
             }
-            console.log("onChange");
           }}
         />
       </Wrapper>
