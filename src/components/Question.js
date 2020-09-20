@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { collegeDark, collegeLight } from "../constants"
-import { QuestionButton } from "./styles"
+import { collegeDark, collegeLight } from "../constants";
+import { QuestionButton, Input } from "./styles";
+// import Number from "./Number";
 
 const Wrapper = styled.div`
   margin: 20px auto;
@@ -26,33 +27,6 @@ const Button = styled.button`
   }
 `;
 
-const Input = styled.input`
-  color: #fafafa;
-  font-family: --apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  background-color: rgba(0, 0, 0, 0);
-  border: none;
-  padding: 10px;
-  outline: none;
-  border-bottom: 1px solid pink;
-
-  ::placeholder {
-    /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: #d5d5d5;
-    opacity: 1; /* Firefox */
-  }
-
-  :-ms-input-placeholder {
-    /* Internet Explorer 10-11 */
-    color: #d5d5d5;
-  }
-
-  ::-ms-input-placeholder {
-    /* Microsoft Edge */
-    color: #d5d5d5;
-  }
-`;
-
 const QuestionWrapper = styled.div`
   width: 100%;
   margin: 0 auto;
@@ -60,6 +34,28 @@ const QuestionWrapper = styled.div`
     width: 90%;
   }
 `;
+
+
+const normalizeInput = (value, previousValue) => {
+  // return nothing if no value
+  if (!value) return value; 
+
+  // only allows 0-9 inputs
+  const currentValue = value.replace(/[^\d]/g, '');
+  const cvLength = currentValue.length; 
+
+  if (!previousValue || value.length > previousValue.length) {
+
+    // returns: "x", "xx", "xxx"
+    if (cvLength < 4) return currentValue; 
+
+    // returns: "(xxx)", "(xxx) x", "(xxx) xx", "(xxx) xxx",
+    if (cvLength < 7) return `(${currentValue.slice(0, 3)}) ${currentValue.slice(3)}`; 
+
+    // returns: "(xxx) xxx-", (xxx) xxx-x", "(xxx) xxx-xx", "(xxx) xxx-xxx", "(xxx) xxx-xxxx"
+    return `(${currentValue.slice(0, 3)}) ${currentValue.slice(3, 6)}-${currentValue.slice(6, 10)}`; 
+  }
+};
 
 const Question = ({
   title,
@@ -69,12 +65,12 @@ const Question = ({
   onChange,
   submitFunction,
   submit,
-  initial
+  initial,
+  number,
 }) => {
   // const [value, setValue] = useState(initial);
 
-  useEffect(() => {
-  }, [keyName, initial]);
+  useEffect(() => {}, [keyName, onChange, initial]);
 
   return (
     <div className="section">
@@ -82,31 +78,44 @@ const Question = ({
         <p>{title}</p>
       </QuestionWrapper>
       <Wrapper>
-        <Input
-          style={{ color: "#fafafa", outline: "#fafafa" }}
-          key={keyName}
-          onKeyDown={(e) => {
-            if (e.key === "Enter") {
-              moveSectionDown();
-            }
-          }}
-          onChange={(e) => {
-            // setValue(e.target.value);
-            onChange(keyName, e.target.value);
-          }}
-          value={initial}
-          placeholder={label}
-        />
+        {number ? (
+          <Input
+            key={keyName}
+            onChange={(e) => {
+              // setValue(e.target.value);
+              onChange(keyName, normalizeInput(e.target.value, initial));
+            }}
+            value={initial}
+            placeholder="(XXX) XXX-XXXX"
+         />
+        ) : (
+          <Input
+            style={{ color: "#fafafa", outline: "#fafafa" }}
+            key={keyName}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                moveSectionDown();
+              }
+            }}
+            onChange={(e) => {
+              // setValue(e.target.value);
+              onChange(keyName, e.target.value);
+            }}
+            value={initial}
+            placeholder={label}
+          />
+        )}
       </Wrapper>
 
       <QuestionButton
         onClick={() => {
           moveSectionDown();
-          if(submit) { // when someone wants to submit another class
+          if (submit) {
+            // when someone wants to submit another class
             window.scrollTo({
               top: window.innerHeight * 3,
               left: 0,
-              behavior: 'smooth'
+              behavior: "smooth",
             });
           }
         }}

@@ -3,8 +3,7 @@
 }
 
 .App {
-  background-color: #00274c;
-  background-image: linear-gradient( #ff8c8c, #feb2b2); 
+  background-image: linear-gradient(#8080d9,#AB9EDB);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -12,6 +11,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  font-weight: 400;
 }
 
 input {
