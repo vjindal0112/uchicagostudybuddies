@@ -88,6 +88,22 @@ const drop = keyframes`
   }
 `;
 
+export const SaveBanner = styled.div`
+  position: fixed;
+  top:0%;
+  width: 100%;
+  background-color: ${collegeLight};
+  color: #fafafa;
+  height: ${props => props.animate ? "50px" : "0px"};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 400;
+  transition: all 2s cubic-bezier(0,1.01,.4,.99);
+  opacity: ${props => props.animate ? "1" : "0"};
+  z-index: 3;
+`;
+
 const Banner = styled.div`
   position: absolute;
   top:0%;

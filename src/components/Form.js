@@ -5,6 +5,7 @@ import Privacy from "./Privacy"
 import { withRouter } from "react-router-dom";
 import SelectBar from "./SelectBar";
 import Slider from "./Slider";
+import { SaveBanner } from "./styles";
 
 const Form = ({ history }) => {
   const [data, setData] = useState({
@@ -23,6 +24,7 @@ const Form = ({ history }) => {
   });
 
   const [reset, setReset] = useState(false);
+  const [animate, setAnimate] = useState(false); // for Save Confirmation Banner
 
   const keys = [
     "name",
@@ -38,6 +40,10 @@ const Form = ({ history }) => {
     "email",
     "number",
   ];
+
+  function bannerUp() {
+    setAnimate(false);
+  }
 
   function pushToSheets(anotherClass) {
 
@@ -67,6 +73,8 @@ const Form = ({ history }) => {
     }
     setData({ ...data, class: "", interest: "2", ambition: "" });
     setReset((reset) => !reset);
+    setAnimate(true);
+    setTimeout(bannerUp, 4000);
     fetch(
       "https://script.google.com/macros/s/AKfycbxs_J6tbBQHuDDmvFo6e9bvD9GCHkvizYy3cBBF_lptVClIIRlO/exec",
       { method: "POST", body: formData }
@@ -102,6 +110,7 @@ const Form = ({ history }) => {
       render={({ state, fullpageApi }) => {
         return (
           <ReactFullpage.Wrapper>
+            <SaveBanner animate={animate}>Saved your class, fill out these 3 fields for another</SaveBanner>
             <Question
               title="To start off, what's your full name?"
               label="Full Name"
