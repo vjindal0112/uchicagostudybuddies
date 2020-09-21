@@ -109,27 +109,26 @@ const Question = ({
 
       <QuestionButton
         onClick={() => {
-          moveSectionDown();
-          if (submit) {
-            // when someone wants to submit another class
-            window.scrollTo({
-              top: window.innerHeight * 3,
-              left: 0,
-              behavior: "smooth",
-            });
+          if(submit) {
+            moveSectionDown(true);
+          } else {
+            moveSectionDown();
           }
         }}
       >
-        {submit ? "Another Class" : "Enter"}
+        {submit ? "Add Another Class" : "Enter"}
       </QuestionButton>
       {submit ? (
+        <>
+        <br/>
         <QuestionButton
           onClick={() => {
             submitFunction();
           }}
         >
-          Submit
+          Submit All Classes
         </QuestionButton>
+        </>
       ) : null}
     </div>
   );

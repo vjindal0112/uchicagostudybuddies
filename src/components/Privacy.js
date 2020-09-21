@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import { QuestionButton } from './styles';
 
 const Wrapper = styled.div`
   margin: 20px auto;
@@ -8,19 +9,6 @@ const Wrapper = styled.div`
 
   @media (max-width: 768px) {
     width: 90%;
-  }
-`;
-
-const Button = styled.button`
-  border: 4px solid #ffcb05;
-  padding: 4px 8px;
-  color: #fafafa;
-  font-size: 18px;
-  background-color: rgba(0, 0, 0, 0);
-
-  transition: all 0.5s;
-  &:hover {
-    background-color: #ffcb05;
   }
 `;
 
@@ -46,13 +34,14 @@ const Privacy = ({ message, moveSectionDown }) => {
         <p>{message}</p>
       </QuestionWrapper>
 
-      <Button
+      <QuestionButton
+        style={{"padding-right" : "14px", "padding-left" : "14px"}}
         onClick={() => {
           moveSectionDown();
         }}
       >
         Ok
-      </Button>
+      </QuestionButton>
     </div>
   );
 };

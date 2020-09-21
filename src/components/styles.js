@@ -1,16 +1,26 @@
 import styled, { keyframes } from 'styled-components'
 import { collegeDark, collegeLight } from '../constants'
 
+export const Heading = styled.h1`
+  font-size: 60px;
+  @media (max-width: 768px) {
+    font-size: 40px;
+  }
+  padding: 10px;
+  font-weight: 400;
+  color: #fafafa;
+`;
+
 export const Button = styled.a`
-  border: 4px solid ${collegeLight};
+  border: 4px solid ${collegeDark};
   padding: 12px;
   margin: 24px;
   color: #fafafa;
 
   transition: all 0.5s;
   &:hover {
-    background-color: ${collegeLight};
-    color: ${collegeDark};
+    background-color: ${collegeDark};
+    color: #fafafa;
   }
 `;
 
@@ -42,7 +52,7 @@ export const Input = styled.input`
 `;
 
 export const QuestionButton = styled.button`
-  border: 4px solid ${collegeLight};
+  border: 4px solid ${collegeDark};
   padding: 4px 8px;
   margin: 10px;
   color: #fafafa;
@@ -51,7 +61,7 @@ export const QuestionButton = styled.button`
 
   transition: all 0.5s;
   &:hover {
-    background-color: ${collegeLight};
+    background-color: ${collegeDark};
   }
 `;
 

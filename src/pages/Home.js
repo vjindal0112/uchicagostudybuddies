@@ -3,18 +3,9 @@ import styled, { keyframes } from "styled-components";
 import logo from "../StudyBuddyLogo.png";
 import Header from "../components/Header"
 import CountUp from "react-countup";
-import { Button, UserCount } from "../components/styles" // styles used for shared styles
+import { Button, UserCount, Heading } from "../components/styles" // styles used for shared styles
 import { collegeName } from "../constants"
 
-
-const Heading = styled.h1`
-  font-size: 60px;
-  @media (max-width: 768px) {
-    font-size: 40px;
-  }
-  padding: 10px;
-  font-weight: 400;
-`;
 
 const Logo = styled.img`
   max-height: 40vh;

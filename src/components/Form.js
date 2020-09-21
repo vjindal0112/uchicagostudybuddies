@@ -39,39 +39,52 @@ const Form = ({ history }) => {
     "number",
   ];
 
-  function pushToSheets() {
-    var formData = new FormData();
-    for (var key in data) {
-      formData.append(key, data[key]);
-    }
-    setData({ ...data, class: "", interest: "2", ambition: "" });
-    // onChangeListener(keys[3], "");
-    // onChangeListener(keys[4], "2");
-    // onChangeListener(keys[5], "");
-    alert("not working yet");
-    console.log(data);
-    setReset((reset) => !reset);
+  function pushToSheets(anotherClass) {
 
     // UNCOMMENT to check for all filled in
-    // for (var i = 0; i < keys.length; i++) {
-    //   if (!data[keys[i]]) {
-    //     alert("Please fill in all fields");
-    //     return;
-    //   }
-    //   if (!data["email"].includes("@umich.edu")) {
-    //     alert("Please enter your UMich email");
-    //     return;
-    //   }
-    // }
-    // fetch(
-    //   "https://script.google.com/macros/s/AKfycbxsJCRqzZa84wWw3YEIjutxl9rJ6vq8yxrUoGLIg3ahtgWKQgo/exec",
-    //   { method: "POST", body: formData }
-    // );
+    for (var i = 0; i < keys.length; i++) {
+      if (!data[keys[i]]) {
+        alert("Please fill in all fields");
+        return false;
+      }
+      if (!data["email"].toLowerCase().includes("@uchicago.edu")) {
+        alert("Please enter your UChicago email");
+        return false;
+      }
+      if(data["number"].length != 14) {
+        alert("Please enter a valid phone number");
+        return false;
+      }
+    }
+
+    var formData = new FormData();
+    for (var key in data) {
+      if(key == "email") {
+        formData.append(key, data[key].toLowerCase().trim());
+      } else {
+        formData.append(key, data[key].trim());
+      }
+    }
+    setData({ ...data, class: "", interest: "2", ambition: "" });
+    setReset((reset) => !reset);
+    fetch(
+      "https://script.google.com/macros/s/AKfycbxs_J6tbBQHuDDmvFo6e9bvD9GCHkvizYy3cBBF_lptVClIIRlO/exec",
+      { method: "POST", body: formData }
+    );
+    if(anotherClass) {
+      window.scrollTo({
+        top: window.innerHeight * 3,
+        left: 0,
+        behavior: "smooth",
+      });
+    }
+    return true;
   }
 
   function submit() {
-    pushToSheets();
-    history.push("/submitted");
+    if(pushToSheets()) {
+      history.push("/submitted");
+    }
   }
 
   function onChangeListener(key, value) {
@@ -192,7 +205,7 @@ const Form = ({ history }) => {
             />
 
             <Privacy
-              message="Just a heads up, we will be sharing your phone number with your study buddies"
+              message="Just a heads up, we will be sharing your phone number and email with your study buddies"
               moveSectionDown={fullpageApi && fullpageApi.moveSectionDown}
             />
 
@@ -230,14 +243,14 @@ const orgs = [
 ];
 
 const grades = [
-  { value: "A+", label: "A+" },
-  { value: "A", label: "A" },
-  { value: "A-", label: "A-" },
-  { value: "B+", label: "B+" },
-  { value: "B", label: "B" },
-  { value: "B-", label: "B-" },
-  { value: "C+", label: "C+" },
-  { value: "C", label: "C" },
+  { value: " A+", label: "A+" }, // have to make spaces before every grade so that there are two characters
+  { value: " A", label: "A" },  // because of react-select's super weird event listeners
+  { value: " A-", label: "A-" },
+  { value: " B+", label: "B+" },
+  { value: " B", label: "B" },
+  { value: " B-", label: "B-" },
+  { value: " C+", label: "C+" },
+  { value: " C", label: "C" },
   { value: "just pass", label: "just pass" },
 ];
 
