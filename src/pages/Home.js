@@ -108,8 +108,8 @@ export default function Home() {
           <h1 style={{ textAlign: "center" }}>How does it work?</h1>
           <p>
             Once you complete the form by entering your class and some of your
-            study habits (due October 3rd at noon!), we will let you know your Study
-            Buddies via email by October 5th.
+            study habits (due October 4th at noon!), we will let you know your Study
+            Buddies via email by October 6th.
           </p>
           <p>
             We know that it's pretty hard to study with someone who you aren't
@@ -138,8 +138,8 @@ export default function Home() {
             <b>When is the last day I can fill this out?</b>
           </p>
           <p>
-            The form will close on October 3rd at noon because we want to
-            get you your StudyBuddies by October 5th.
+            The form will close on October 4th at noon because we want to
+            get you your StudyBuddies by October 6th.
           </p>
         </TextDiv>
       </Section>
