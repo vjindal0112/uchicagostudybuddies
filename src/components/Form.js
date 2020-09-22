@@ -264,11 +264,11 @@ const grades = [
 ];
 
 const year = [
-  { value: "Freshman", label: "Freshman" },
-  { value: "Sophomore", label: "Sophomore" },
-  { value: "Junior", label: "Junior" },
-  { value: "Senior", label: "Senior" },
-  { value: "5th Year", label: "5th Year" },
+  { value: "First Year", label: "First Year" },
+  { value: "Second Year", label: "Second Year" },
+  { value: "Third Year", label: "Third Year" },
+  { value: "Fourth Year", label: "Fourth Year" },
+  { value: "Fifth Year", label: "Fifth Year" },
 ];
 
 const gender = [
