@@ -3,7 +3,7 @@ import "./App.css";
 import Home from "./pages/Home";
 import ReactGA from 'react-ga';
 
-const trackingId = "UA-176116817-3"; // Replace with your Google Analytics tracking ID
+const trackingId = "UA-176116817-4"; // Replace with your Google Analytics tracking ID
 ReactGA.initialize(trackingId);
 ReactGA.pageview(window.location.pathname + window.location.search);
 

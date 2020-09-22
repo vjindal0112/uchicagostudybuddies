@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { collegeDark, collegeLight } from "../constants";
 import { QuestionButton, Input } from "./styles";
+import ReactGA from "react-ga";
 // import Number from "./Number";
 
 const Wrapper = styled.div`
@@ -35,25 +36,27 @@ const QuestionWrapper = styled.div`
   }
 `;
 
-
 const normalizeInput = (value, previousValue) => {
   // return nothing if no value
-  if (!value) return value; 
+  if (!value) return value;
 
   // only allows 0-9 inputs
-  const currentValue = value.replace(/[^\d]/g, '');
-  const cvLength = currentValue.length; 
+  const currentValue = value.replace(/[^\d]/g, "");
+  const cvLength = currentValue.length;
 
   if (!previousValue || value.length > previousValue.length) {
-
     // returns: "x", "xx", "xxx"
-    if (cvLength < 4) return currentValue; 
+    if (cvLength < 4) return currentValue;
 
     // returns: "(xxx)", "(xxx) x", "(xxx) xx", "(xxx) xxx",
-    if (cvLength < 7) return `(${currentValue.slice(0, 3)}) ${currentValue.slice(3)}`; 
+    if (cvLength < 7)
+      return `(${currentValue.slice(0, 3)}) ${currentValue.slice(3)}`;
 
     // returns: "(xxx) xxx-", (xxx) xxx-x", "(xxx) xxx-xx", "(xxx) xxx-xxx", "(xxx) xxx-xxxx"
-    return `(${currentValue.slice(0, 3)}) ${currentValue.slice(3, 6)}-${currentValue.slice(6, 10)}`; 
+    return `(${currentValue.slice(0, 3)}) ${currentValue.slice(
+      3,
+      6
+    )}-${currentValue.slice(6, 10)}`;
   }
 };
 
@@ -87,7 +90,7 @@ const Question = ({
             }}
             value={initial}
             placeholder="(XXX) XXX-XXXX"
-         />
+          />
         ) : (
           <Input
             style={{ color: "#fafafa", outline: "#fafafa" }}
@@ -109,7 +112,12 @@ const Question = ({
 
       <QuestionButton
         onClick={() => {
-          if(submit) {
+          if (submit) {
+            ReactGA.event({
+              category: "Navigation",
+              action: "Click",
+              label: "Add Another Class",
+            });
             moveSectionDown(true);
           } else {
             moveSectionDown();
@@ -120,14 +128,19 @@ const Question = ({
       </QuestionButton>
       {submit ? (
         <>
-        <br/>
-        <QuestionButton
-          onClick={() => {
-            submitFunction();
-          }}
-        >
-          Submit All Classes
-        </QuestionButton>
+          <br />
+          <QuestionButton
+            onClick={() => {
+              ReactGA.event({
+                category: "Navigation",
+                action: "Click",
+                label: "Submit All Classes",
+              });
+              submitFunction();
+            }}
+          >
+            Submit All Classes
+          </QuestionButton>
         </>
       ) : null}
     </div>

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
 import logo from "../StudyBuddyLogo.png";
-import Header from "../components/Header"
+import Header from "../components/Header";
 import CountUp from "react-countup";
-import { Button, UserCount, Heading } from "../components/styles" // styles used for shared styles
-import { collegeName } from "../constants"
-
+import { Button, UserCount, Heading } from "../components/styles"; // styles used for shared styles
+import { collegeName } from "../constants";
+import ReactGA from 'react-ga';
 
 const Logo = styled.img`
   max-height: 40vh;
@@ -41,7 +41,7 @@ const BgImage = styled.div`
 
 const BgOverlay = styled.div`
   /* background-image: linear-gradient(45deg, rgba(2,20,80,.5), rgba(2,50,100, 1)); */
-  background-image: linear-gradient(#8080d9,#AB9EDB);
+  background-image: linear-gradient(#8080d9, #ab9edb);
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
@@ -50,7 +50,6 @@ const BgOverlay = styled.div`
   min-height: 88vh;
   z-index: -1;
 `;
-
 
 export default function Home() {
   const [userCount, setUserCount] = useState(0);
@@ -65,9 +64,9 @@ export default function Home() {
 
   return (
     <>
-      <Header/>
-      <BgOverlay/>
-      <BgImage/>
+      <Header />
+      <BgOverlay />
+      <BgImage />
       <div className="App" style={{ height: "88vh", minHeight: "88vh" }}>
         <Logo src={logo} />
         <Heading>{collegeName} StudyBuddies</Heading>
@@ -85,7 +84,18 @@ export default function Home() {
           </UserCount>
           <div>Maroons</div> */}
         </div>
-        <Button href="/form">Find your Buddy</Button>
+        <Button
+          onClick={() => {
+            ReactGA.event({
+              category: "Navigation",
+              action: "Click",
+              label: "Find your Buddy",
+            });
+          }}
+          href="/form"
+        >
+          Find your Buddy
+        </Button>
       </div>
       <Section backgroundColor="#fefefe">
         <TextDiv>
@@ -108,8 +118,8 @@ export default function Home() {
           <h1 style={{ textAlign: "center" }}>How does it work?</h1>
           <p>
             Once you complete the form by entering your class and some of your
-            study habits (due October 4th at noon!), we will let you know your Study
-            Buddies via email by October 6th.
+            study habits (due October 4th at noon!), we will let you know your
+            Study Buddies via email by October 6th.
           </p>
           <p>
             We know that it's pretty hard to study with someone who you aren't
@@ -118,8 +128,8 @@ export default function Home() {
             together.
           </p>
           <p>
-            All of this data will be completely private, so you
-            have nothing to worry about.
+            All of this data will be completely private, so you have nothing to
+            worry about.
           </p>
         </TextDiv>
       </Section>
@@ -138,8 +148,8 @@ export default function Home() {
             <b>When is the last day I can fill this out?</b>
           </p>
           <p>
-            The form will close on October 4th at noon because we want to
-            get you your StudyBuddies by October 6th.
+            The form will close on October 4th at noon because we want to get
+            you your StudyBuddies by October 6th.
           </p>
         </TextDiv>
       </Section>
