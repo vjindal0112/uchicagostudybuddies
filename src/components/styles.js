@@ -57,17 +57,18 @@ export const Input = styled.input`
 
 export const QuestionButton = styled.button`
   border: 3px solid ${collegeDark};
+  background-color: ${collegeDark};
   padding: 4px 8px;
   margin: 10px;
   color: #fafafa;
   font-size: 18px;
-  background-color: rgba(0, 0, 0, 0);
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
 
   transition: all 0.5s;
   &:hover {
-    background-color: ${collegeDark};
+    background-color: #600000;
+    border: 3px solid #600000;
   }
 `;
 
