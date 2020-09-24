@@ -99,6 +99,7 @@ export const SaveBanner = styled.div`
   position: fixed;
   top: 0%;
   width: 100%;
+  font-size: 18px;
   background-color: ${collegeLight};
   color: #fafafa;
   height: ${(props) => (props.animate ? "50px" : "0px")};
