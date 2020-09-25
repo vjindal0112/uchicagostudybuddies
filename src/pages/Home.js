@@ -52,7 +52,7 @@ const BgOverlay = styled.div`
 `;
 
 export default function Home() {
-  const [userCount, setUserCount] = useState(0);
+  const [userCount, setUserCount] = useState(200);
 
   useEffect(() => {
     fetch(
@@ -80,11 +80,11 @@ export default function Home() {
             marginLeft: "10px",
           }}
         >
-          {/* <div>Join</div>
+          <div>Join</div>
           <UserCount>
-            <CountUp start={0} end={userCount} />
+            <CountUp start={200} end={userCount} />
           </UserCount>
-          <div>Maroons</div> */}
+          <div>Maroons</div>
         </div>
         <Button
           onClick={() => {
