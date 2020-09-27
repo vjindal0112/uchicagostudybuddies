@@ -84,7 +84,7 @@ const BulletPoints = styled.div`
   background-color: #8b0000;
   font-size: 25px;
   text-align: center;
-  font-weight: 1000;
+  font-weight: 500;
   color: white;
   flex-shrink: 0;
 `;
