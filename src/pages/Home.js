@@ -172,7 +172,7 @@ export default function Home() {
       </Section>
       <Section padding="50px" backgroundColor="#fefefe">
         <TextDiv>
-          <h1 style={{ textAlign: "center" }}>Make it easy</h1>
+          <h1 style={{ textAlign: "center" }}>We make it easy</h1>
 
           <p>
             Zoom University makes it really hard to find friends in your
