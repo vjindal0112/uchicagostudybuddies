@@ -89,6 +89,44 @@ const BulletPoints = styled.div`
   flex-shrink: 0;
 `;
 
+const drop = keyframes`
+  0% {
+    height: 0px;
+    opacity: 0;
+  }
+
+  20% {
+    height: 40px;
+    opacity: 1;
+  }
+
+  90% {
+    height: 40px;
+    opacity: 1;
+  }
+
+  100% {
+    height: 0px;
+    opacity: 0;
+    display: none;
+  }
+`;
+
+const Banner = styled.div`
+  position: absolute;
+  top: 0%;
+  width: 100%;
+  background-color: #ffcb05;
+  color: #00274c;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  animation: ${drop} 6s ease-out;
+  opacity: 0;
+`;
+
 export default function Home() {
   const [userCount, setUserCount] = useState(1500);
 
@@ -102,6 +140,7 @@ export default function Home() {
 
   return (
     <>
+      <Banner>The form is closed!</Banner>
       <Header />
       <BgOverlay />
       <BgImage />
@@ -124,18 +163,7 @@ export default function Home() {
           </UserCount>
           <div>Maroons</div>
         </div>
-        <Button
-          onClick={() => {
-            ReactGA.event({
-              category: "Navigation",
-              action: "Click",
-              label: "Find your Buddy",
-            });
-          }}
-          href="/form"
-        >
-          Find your Buddies
-        </Button>
+        <Button>Closed</Button>
       </div>
       <Section padding="20px" backgroundColor="#fefefe">
         <h1 style={{ textAlign: "center" }}>How it works</h1>
