@@ -66,8 +66,8 @@ const Feedback = () => {
       <div className="App" style={{ padding: "4px" }}>
         <Texth1>You've been added to the raffle!</Texth1>
         <Texth4>
-          We'll use your feedback to improve the Studybuddies matches for next
-          semester. <br /> <br />
+          We'll use your feedback to improve the StudyBuddies matches for future 
+          quarters. <br /> <br />
         </Texth4>
         <Texth4>
           Check out our{" "}
