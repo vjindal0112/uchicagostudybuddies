@@ -227,7 +227,7 @@ export default function Home() {
           <p>
             <b>Can I fill the form out for more than one class?</b>
           </p>
-          <p>For this semester, we are only offering it for ECON 20200</p>
+          <p>For this quarter we are only offering it for ECON 20200.</p>
           <p>
             <b>When is the last day I can fill this out?</b>
           </p>
