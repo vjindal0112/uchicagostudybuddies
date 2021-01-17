@@ -135,7 +135,7 @@ const Form = ({ history }) => {
     }
     setData({ ...data, class: "", interest: "2", ambition: "" });
     fetch(
-      "https://script.google.com/macros/s/AKfycbyjdTT8djPrKH_olhByeHmOXKtc1Iawrdz9u2b2-DO03gRDqbS3zyZp/exec",
+      "https://script.google.com/macros/s/AKfycbzv7o7-FijMDRs6Y66uMVhAbX0OKc8IuSeUdRCcixZ8cblxxRTjrSmK/exec",
       { method: "POST", body: formData }
     );
     console.log("working");
