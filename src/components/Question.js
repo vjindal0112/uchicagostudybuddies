@@ -110,7 +110,7 @@ const Question = ({
         )}
       </Wrapper>
 
-      <QuestionButton
+      {/*<QuestionButton
         onClick={() => {
           if (submit) {
             ReactGA.event({
@@ -125,7 +125,7 @@ const Question = ({
         }}
       >
         {submit ? "Add Another Class" : "Enter"}
-      </QuestionButton>
+      </QuestionButton> */}
       {submit ? (
         <>
           <br />
@@ -134,12 +134,12 @@ const Question = ({
               ReactGA.event({
                 category: "Navigation",
                 action: "Click",
-                label: "Submit All Classes",
+                label: "Submit",
               });
               submitFunction();
             }}
           >
-            Submit All Classes
+            Submit
           </QuestionButton>
         </>
       ) : null}

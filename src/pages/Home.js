@@ -140,7 +140,6 @@ export default function Home() {
 
   return (
     <>
-      <Banner>The form is closed!</Banner>
       <Header />
       <BgOverlay />
       <BgImage />
@@ -163,7 +162,18 @@ export default function Home() {
           </UserCount>
           <div>Maroons</div>
         </div>
-        <Button>Closed</Button>
+        <Button
+          href="/form"
+          onClick={() => {
+            ReactGA.event({
+              category: "Navigation",
+              action: "Click",
+              label: "Find your Buddies",
+            });
+          }}
+        >
+          Find your Buddies
+        </Button>
       </div>
       <Section padding="20px" backgroundColor="#fefefe">
         <h1 style={{ textAlign: "center" }}>How it works</h1>
@@ -175,7 +185,7 @@ export default function Home() {
           <br />
           <Flex>
             <BulletPoints>2</BulletPoints>
-            <BulletText>Get your buddies Oct. 6</BulletText>
+            <BulletText>Get your buddies Jan. 31</BulletText>
           </Flex>
           <br />
           <Flex>
@@ -225,8 +235,8 @@ export default function Home() {
             <b>When is the last day I can fill this out?</b>
           </p>
           <p>
-            The form will close on October 4th at noon because we want to get
-            you your StudyBuddies by October 6th.
+            The form will close on January 29th at noon because we want to get
+            you your StudyBuddies by January 31st.
           </p>
           <p>
             <b>Where can I find more information?</b>
