@@ -7,6 +7,8 @@ import Submitted from "./pages/Submitted";
 import Home from "./pages/Home"
 import * as serviceWorker from "./serviceWorker";
 import FormPage from "./pages/FormPage";
+import Feedback from "./pages/Feedback"
+import Raffle from "./pages/Raffle"
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'bootstrap-css-only/css/bootstrap.min.css';
 import 'mdbreact/dist/css/mdb.css';
@@ -18,6 +20,8 @@ const routing = (
       <Route path="/form" component={FormPage} />
       <Route path="/submitted" component={Submitted} />
       <Route path="/home" component={Home} />
+      <Route path="/feedback" component={Feedback} />
+      <Route path="/raffle" component={Raffle} />
     </Switch>
   </Router>
 );
