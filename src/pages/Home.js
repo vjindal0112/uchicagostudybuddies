@@ -122,7 +122,7 @@ const Banner = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-weight: 600;
+  font-weight: 500;
   animation: ${drop} 6s ease-out;
   opacity: 0;
 `;
@@ -141,11 +141,13 @@ export default function Home() {
   return (
     <>
       <Header />
+
       <BgOverlay />
       <BgImage />
       <div className="App" style={{ height: "88vh", minHeight: "88vh" }}>
         <Logo src={logo} />
         <Heading>{collegeName} StudyBuddies</Heading>
+        <Banner>The form is closed!</Banner>
         <div
           style={{
             display: "flex",
@@ -163,7 +165,6 @@ export default function Home() {
           <div>Maroons</div>
         </div>
         <Button
-          href="/form"
           onClick={() => {
             ReactGA.event({
               category: "Navigation",
@@ -172,7 +173,7 @@ export default function Home() {
             });
           }}
         >
-          Find your Buddies
+          Closed
         </Button>
       </div>
       <Section padding="20px" backgroundColor="#fefefe">
@@ -219,7 +220,6 @@ export default function Home() {
           </p>
         </TextDiv>
       </Section>
-
       <Section padding="50px" backgroundColor="#f2f2f2">
         <TextDiv>
           <h1 style={{ textAlign: "center" }}>FAQ</h1>
@@ -227,7 +227,11 @@ export default function Home() {
           <p>
             <b>Can I fill the form out for more than one class?</b>
           </p>
-          <p>For this quarter we are only offering it for ECON 20200.</p>
+          <p>
+            We are only open for ECON 20200 this quarter. Tell the head of your
+            department to reach out to team@studybuddies.ai and we can open up
+            for the entire school again :)
+          </p>
           <p>
             <b>When is the last day I can fill this out?</b>
           </p>
